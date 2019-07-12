@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title id="browser-title">Practice</title>
+        <h2 id="title">JavaScript Practice</h2>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="copyButtonStyle.css">
+    </head>
+
+    <body>
+        <main>
+            <p>Click the button to copy the NBA Finals, Game 6 infromation</p>
+            NBA Finals, Game 6:<br>
+            <textarea type ="text" id="text-area">
+Toronto Raptors vs. Golden State Warriors
+9:00 PM @ Scotiabank Arena
+13 June 2019
+
+2019 NBA CHAMPIONS: Toronto Raptors</textarea>
+            <button
+                type="button"
+                id="copy-button">COPY TEXT
+            </button>
+        </main>
+
+
+            <p>Double click one of these buttons to select the team you want to be displayed</p>
+            <button 
+                type="button"
+                id="TR-button">TR
+            </button>
+            <button
+                type="button"
+                id="GSW-button">GSW
+            </button>
+            <textarea id="blank"> </textarea>
+
+
+
+        
+        <img src=https://i.cdn.turner.com/nba/nba/.element/media/2.0/teamsites/warriors/images/AnthemBuddies_303x296.PNG>
+
+        <script type="text/javascript" src=copyButtonScript.js></script>
+    </body>
+
+</html> 
+
+
+<!-- rendering the text for the buttons without a textbox
+<a id="blank"> </a>
+-->
+
+
+<!-- code for dropdown  (NOT WORKING)
+    <div class="dropdown">
+        <p>Click the button to activate the dropdown</p>
+        <button 
+            class="dropbtn">DROPDOWN
+        </button>
+
+        <div
+            class="dropdown-content">
+                <option value="https://www.lineups.com/nba/lineups/toronto-raptors">TR S</option>
+                <option value="https://www.lineups.com/nba/lineups/golden-state-warriors">GSW S</option>
+        </div>
+    </div>
+-->
+
+
+<!-- code for a <select> dropdown menu. not a button
+<select 
+    name = jumpmenu
+    onChange = "jumpto(document.form1.jumpmenu.options[document.form1.jumpmenu.options.selectedIndex].value)"
+    class="dropdown-content">
+        <option value="https://www.lineups.com/nba/lineups/toronto-raptors">Toronto Raptors Starters</option>
+        <option href=https://www.lineups.com/nba/lineups/golden-state-warriors>Golden State Warriors Starters</option>
+</select>
+-->
+
+
+
+
+
+
+
+
+
+

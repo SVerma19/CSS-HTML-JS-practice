@@ -1,0 +1,141 @@
+<script>
+    // adding user interface --> DOM Variables
+    let textArea = document.getElementById("text-area");
+    let newGameButton = document.getElementById("new-game-button");
+    let hitButton = document.getElementById("hit-button");
+    let stayButton = document.getElementById("stay-button");
+
+    // game variables
+    var gameStarted = false;
+    var gameOver = false;
+    var playerWon = false;
+    var dealerCards = [];
+    var playerCards = [];
+    var dealerScore = 0;
+    var playerScore = 0;
+    var deck = [];
+
+    // not using either of these buttons initially
+    hitButton.style.display = "none";
+    stayButton.style.display = "none";
+    showStatus();
+
+    // put code for all of the buttons before the other functions
+    // first button to be activated --> New Game
+    newGameButton.addEventListener("click", function() {
+        gameStarted = true;
+        gameOver = false;
+        playerWon = false;
+
+        deck = createDeck();
+        var dealerCards = [getNextCard(), getNextCard()];
+        var playerCards = [getNextCard(), getNextCard()];
+
+        newGameButton.style.display = "none";
+        hitButton.style.display = "inline";
+        hitButton.style.display = "inline";
+        showStatus();
+    });
+
+    // hit button
+    hitButton.addEventListener("click", function(){
+        playerCards.push(getNextCard());
+        checkForEndOfGame();
+        showStatus();
+    });
+    
+    // stay button
+    stayButton.addEventListener("click", function() {
+        gameOver = true;
+        checkForEndOfGame();
+        showStatus();
+    });
+
+
+    // function to create deck of cards 
+    function createDeck(suits, values, deck) {
+    // puts the variables being used into arrays
+    var suit = ["Hearts", "Clubs", "Diamonds", "Spades"];
+    var value = ["A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"];
+    // creates empty array to fill with deck of cards
+    
+    // creates the deck of cards and pushes them into the "deck" array
+    for (var i = 0; i < value.length; i++) {
+        for (var j = 0; j < suit.length; j++) {
+            let card = { 
+                value: values[i],
+                suit: suit[j]
+            };
+            deck.push(card);
+        }
+    }
+    return deck;
+}
+    // fills the deck with the work done in the previous function
+    var deck = createDeck();
+
+    function shuffleDeck(deck) {
+        for (i = 0, i < deck.length; i++) {
+            // by default, Math.random returns a number between 0 and 1
+            // Math.trunc() function returns the integer part of a number by removing any fractional digits
+            // calculating index of card that can swap with
+            var swapIndex = Math.trunc(Math.random() * deck.length);
+            // swapping deck[i] with deck[swapIndex]
+            var temporary = deck[swapIndex];
+            deck[swapIndex] = deck[i];
+            deck[i] = temporary;
+        }
+    }
+    
+    // puts the name of the card into string form
+    function cardString(card) {
+    return (card.value + " of " + card.suit);
+}
+
+    
+    // using the shift function (getting rid of the first element in an array), this gets the next card in the deck/element in the array
+    function getNextCard(deck) {
+    return deck.shift();
+}
+
+    function checkForEndOfGame() {
+
+        updateScores();
+
+        if (gameOver) {
+            while (dealerScore < playerScore)
+                && playerScore <= 21
+                && dealerScore <= 21 {
+            dealerCards.push(getNextCard());
+            updateScores();
+            }
+        }
+
+        if (playerScore > 21) {
+            playerWon = false;
+            gameOver = true;
+        } else if (dealerScore > 21) {
+            playerWon = true;
+            gameOver = true;
+        } else if (gameOver) {
+            if (playerScore > dealerScore) {
+                playeWon = true;
+            } else {
+                playerWon = false;
+            }
+        }
+    }
+
+    // if the game is not started, it shows "Welcome to Blackjack"
+    function showStatus()   {
+        if (!gameStarted) {
+            textArea.innerText = "Welcome to Blackjack";
+            return;
+        }
+
+
+    // creates the player's hand and prints what they get
+    var playerCards = [getNextCard(), getNextCard()];
+    console.log("JavaScript Blackjack");
+    console.log("You are dealt: " + cardString(playerCards[0]) + ", " + cardString(playerCards[1]);
+</script>
